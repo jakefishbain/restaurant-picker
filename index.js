@@ -9,10 +9,10 @@ const yelp = require('yelp-fusion');
 const apiKey = 'HTR-yJmMaC9NakRjSsPX5CJBN4SYdTpDJ4rZhp3SHRMy8fHgmkrda_TM2vUl65lWbaucjEA1oQWSNnnl-kxq1aV69_HAKVvN_RMJAs2lbEQDPcs33w6O4c4QkmVXYXYx';
 
 const searchRequest = {
-    // categories:'bar,restaurant',
+    categories:'bar,restaurant',
     location: '60611',
-    // open_now: true,
-    term: 'sushi-x'
+    open_now: true,
+    // term: 'sushi-x'
 };
 
 const client = yelp.client(apiKey);
