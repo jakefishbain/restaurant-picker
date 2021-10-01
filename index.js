@@ -1,5 +1,7 @@
 'use strict';
 
+const http = require('http')
+
 const yelp = require('yelp-fusion');
 
 // Place holder for Yelp Fusion's API Key. Grab them
@@ -45,3 +47,33 @@ client.search(searchRequest).then(response => {
 }).catch(e => {
   console.log(e);
 });
+
+
+const server = http.createServer((req, res) => {
+    res.writeHead(200, {
+        'Content-Type': 'text/plain'
+    });
+
+    client.search(searchRequest).then(response => {
+        const businesses = response.jsonBody.businesses
+        const business = businesses[Math.floor(Math.random()*businesses.length)];
+        // console.log(business)
+        const r = new Business(
+            business.name, 
+            business.review_count, 
+            business.rating, 
+            business.price,
+            business.location.display_address,
+            business.display_phone
+        )
+
+        console.table([r])
+        // return r
+        res.write(JSON.stringify(r, null, 2));
+        res.end();
+    }).catch(e => {
+    console.log(e);
+    });
+})
+
+server.listen(process.env.PORT || 3000)

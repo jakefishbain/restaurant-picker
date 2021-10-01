@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gh": "^2.8.9",
     "yelp-fusion": "^3.0.0"
   }
 }
